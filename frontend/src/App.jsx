@@ -2,13 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import WhyItMatters from './components/WhyItMatters';
-import HowItWorks from './components/HowItWorks';
-import Calculators from './components/Calculators';
+import Calculate from './components/Calculators';
 import EarnCredits from './components/EarnCredits';
-import ProgressTracker from './components/ProgressTracker';
+import Insights from './components/Insights';
+import ProgressTracker from './components/ProgressTracker';  
 import Footer from './components/Footer';
 import './styles.css';
+import './App.css';
 
 function App() {
   return (
@@ -17,11 +17,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HeroSection />} />
         <Route path="/track" element={<ProgressTracker />} />
-        <Route path="/calculators" element={<Calculators />} />
+        <Route path="/calculators" element={<Calculate />} />
         <Route path="/credits" element={<EarnCredits />} />
+        <Route path="/insights" element={<Insights />} />
       </Routes>
-      <WhyItMatters />
-      <HowItWorks />
       <Footer />
     </Router>
   );

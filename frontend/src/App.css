@@ -36,3 +36,57 @@
     transform: rotate(360deg);
   }
 }
+/* styles.css */
+.progress-tracker {
+  text-align: center;
+  padding: 20px;
+}
+
+.progress-bar {
+  width: 80%;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.progress {
+  height: 30px;
+  background-color: #2e7d32;
+  color: white;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.chart-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Make the body fill the entire height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Main container that holds all content */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Take full height of viewport */
+}
+
+/* Ensure the content area takes up remaining space */
+.main-content {
+  flex-grow: 1; /* This makes the content grow and take available space */
+}
+
+/* Styling for footer */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  /* Adjust these properties as per your design */
+}
