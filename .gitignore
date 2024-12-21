@@ -1,0 +1,11 @@
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore Python virtual environment
+myenv/
+
+# Other temporary files
+.DS_Store
+*.log
+*.pyc
+__pycache__/
