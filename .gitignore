@@ -2,8 +2,7 @@
 node_modules/
 
 # Ignore Python virtual environment
-myenv/
-
+backend/myenv
 # Other temporary files
 .DS_Store
 *.log

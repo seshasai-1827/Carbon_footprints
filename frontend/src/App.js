@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import CarbonCalculator from './components/CarbonCalculator';
+import ProgressTracker from './components/ProgressTracker';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px', backgroundColor: '#f0fdf4' }}>
+      <h1 style={{ color: '#2c7a7b', textAlign: 'center' }}>Take Control of Your Carbon Footprint</h1>
+      <CarbonCalculator />
+      <ProgressTracker />
     </div>
   );
-}
+};
 
 export default App;
