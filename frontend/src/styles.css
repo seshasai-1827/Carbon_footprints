@@ -3,135 +3,62 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
-    margin: 0;
-}
-/* Intro Section Styling */
-.calculate-intro {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 50px 0; /* Add space between sections */
-  padding: 20px;
+  margin: 0;
 }
 
-.calculate-intro h2 {
-  font-size: 36px; /* Larger font for the heading */
-  font-weight: bold;
-  color: #333;
-}
-
-.calculate-intro p {
-  font-size: 20px; /* Smaller font for the paragraph */
-  color: #666;
-  margin-top: 10px;
-}
-
-/* Cards Section Styling */
-.calculator-cards {
-  display: flex;
-  justify-content: center; /* Center cards horizontally */
-  align-items: center; /* Center cards vertically */
-  flex-wrap: wrap; /* Allow cards to wrap to the next line if needed */
-  gap: 20px; /* Space between cards */
-  padding: 20px;
-  height: auto; /* Adjust height automatically based on content */
-}
-
-/* Individual card styling */
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 250px; /* Set a fixed width for the cards */
-  height: 250px; /* Set a fixed height for the cards */
-  background-color: #f4f4f4;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.credits-intro {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 50px 0; /* Add space between sections */
-  padding: 20px;
-}
-
-.credits-intro h2 {
-  font-size: 36px; /* Larger font for the heading */
-  font-weight: bold;
-  color: #333;
-}
-
-.credits-intro p {
-  font-size: 20px; /* Smaller font for the paragraph */
-  color: #666;
-  margin-top: 10px;
-}
-
-/* Cards Section Styling */
-.credits-cards {
-  display: flex;
-  justify-content: center; /* Center cards horizontally */
-  align-items: center; /* Center cards vertically */
-  flex-wrap: wrap; /* Allow cards to wrap to the next line if needed */
-  gap: 20px; /* Space between cards */
-  padding: 20px;
-  height: auto; /* Adjust height automatically based on content */
-}
-
-.insights-intro {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 50px 0; /* Add space between sections */
-  padding: 20px;
-}
-
-.insights-intro h2 {
-  font-size: 36px; /* Larger font for the heading */
-  font-weight: bold;
-  color: #333;
-}
-
-.insights-intro p {
-  font-size: 20px; /* Smaller font for the paragraph */
-  color: #666;
-  margin-top: 10px;
-}
-
-/* Cards Section Styling */
-.insight-cards {
-  display: flex;
-  justify-content: center; /* Center cards horizontally */
-  align-items: center; /* Center cards vertically */
-  flex-wrap: wrap; /* Allow cards to wrap to the next line if needed */
-  gap: 20px; /* Space between cards */
-  padding: 20px;
-  height: auto; /* Adjust height automatically based on content */
-}
-
-
-
-
-
-header {
+/* Header Styles */
+.header {
+  background-color: #2e7d32; /* Soft green shade */
   position: sticky;
   top: 0;
-  background-color: #2e7d32;
+  z-index: 1000;
+  width: 100%;
   padding: 10px 0;
-  text-align: center;
-  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  min-height: 15px;
 }
 
+.header-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.header-links li {
+  display: inline;
+}
+
+.header-links a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-links a:hover {
+  background-color: #3e8e41; /* Slightly darker green */
+  color: #f4f4f4;
+}
+
+@media (max-width: 768px) {
+  .header-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+/* Navigation (Redundant Old Code Removed) */
 nav ul {
   list-style: none;
   display: flex;
@@ -147,6 +74,92 @@ nav ul li a {
   text-decoration: none;
 }
 
+/* Hero Section */
+.hero {
+  background-image: url('C:\\Users\\unmes\\OneDrive\\Desktop\\Carbon_footprints\\frontend\\src\\assets\\images\\wow.gif');
+  background-size: cover;
+  background-position: center 80%;
+  height: 421px;
+  padding: 100px 0;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 2px 9px rgba(0, 0, 0, 0.7);
+}
+
+.hero h1 {
+  font-size: 3em;
+}
+
+.hero p {
+  font-size: 1.5em;
+}
+
+/* Section Intro Styles */
+.calculate-intro,
+.credits-intro,
+.insights-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 50px 0;
+  padding: 11.5px;
+}
+
+.calculate-intro h2,
+.credits-intro h2,
+.insights-intro h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+}
+
+.calculate-intro p,
+.credits-intro p,
+.insights-intro p {
+  font-size: 20px;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Cards Section */
+.calculator-cards,
+.credits-cards,
+.insight-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 74px;
+  height: auto; /* Automatically adjust based on content */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  padding-bottom: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin-bottom: 20px;
+}
+
+/* Button Styles */
 button {
   background-color: #2e7d32;
   color: white;
@@ -160,82 +173,22 @@ button:hover {
   background-color: #1b5e20;
 }
 
-/* Hero Section */
-
-.hero {
-  background-image: url('C:\Users\unmes\OneDrive\Desktop\New folder\Carbon_footprints\frontend\src\assets\images\wow.gif');
-  background-size: cover;
-  background-position: center 80%; /* Keeps the gif at the top */
-  height: 400px;
-  padding: 100px 0;
-  color: white;
-  text-align: center;
-  text-shadow: 1px 2px 9px rgba(0, 0, 0, 0.7);
-}
-.hero h1 {
-  font-size: 3em;
-}
-
-.hero p {
-  font-size: 1.5em;
-}
-
-/* Cards */
-.cards {
+/* Centering Content in Fullscreen Sections */
+.about,
+.calculator,
+.insights,
+.earn-credits {
   display: flex;
-  justify-content: space-around;
-}
-
-.card {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   text-align: center;
-  flex: 1;
-}
-
-.card h3 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-.card p {
-  margin-bottom: 20px;
-}
-/* Centering content for each section */
-.about, .calculator, .insights, .earn-credits {
-  display: flex;
-  justify-content: center; /* Horizontally centers the content */
-  align-items: center; /* Vertically centers the content */
-  height: 100vh; /* Makes the section take up full viewport height */
-  text-align: center; /* Ensures text is centered */
   padding: 20px;
 }
 
-/* Optional: Add some margin if you want space around the content */
-.about > div, .calculator > div, .insights > div, .earn-credits > div {
-  margin: 0 20px; /* Adjust this as needed */
+.about > div,
+.calculator > div,
+.insights > div,
+.earn-credits > div {
+  margin: 0 20px;
 }
-/* Footer */
-.footer {
-  background-color: #2e7d32;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.footer ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer ul li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-.social-media {
-  margin-top: 10px;
-}
-

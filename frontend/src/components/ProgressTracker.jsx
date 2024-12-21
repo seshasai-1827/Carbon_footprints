@@ -13,7 +13,7 @@ ChartJS.register(
 );
 
 const ProgressTracker = () => {
-  const [progress, setProgress] = useState(40);
+  const [progress] = useState(40);
 
   const data = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
