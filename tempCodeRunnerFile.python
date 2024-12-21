@@ -1,0 +1,10 @@
+import sqlite3
+connect = sqlite3.connect('database.db') 
+cursor = connect.cursor()
+cursor.execute( 'CREATE TABLE IF NOT EXISTS USERS (username TEXT, password TEXT)') 
+cursor.execute("INSERT INTO USERS VALUES('UNMESH','HELLO'),('SAI','WOW')")
+connect.commit()
+cursor.execute("select * from USERS")
+print(cursor.fetchall())
+cursor.execute("DROP TABLE IF EXISTS USERS")
+connect.close()
