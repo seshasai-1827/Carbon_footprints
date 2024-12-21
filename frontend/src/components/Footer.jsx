@@ -17,7 +17,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-section">
-          <h4>Follow Us</h4>
+          <h4>Source Code</h4>
           <a href="https://github.com/seshasai-1827/Carbon_footprints" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>

@@ -27,6 +27,15 @@
 .App-link {
   color: #61dafb;
 }
+/* Only center the About section */
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -64,6 +73,20 @@
   margin: 0 auto;
 }
 
+/* Centering content for each section */
+.about, .calculator, .insights, .earn-credits {
+  display: flex;
+  justify-content: center; /* Horizontally centers the content */
+  align-items: center; /* Vertically centers the content */
+  height: 100vh; /* Makes the section take up full viewport height */
+  text-align: center; /* Ensures text is centered */
+  padding: 20px;
+}
+
+/* Optional: Add some margin if you want space around the content */
+.about > div, .calculator > div, .insights > div, .earn-credits > div {
+  margin: 0 20px; /* Adjust this as needed */
+}
 /* Make the body fill the entire height */
 html, body {
   height: 100%;

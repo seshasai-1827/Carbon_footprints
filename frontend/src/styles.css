@@ -3,8 +3,125 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
-  margin: 0;
+    margin: 0;
 }
+/* Intro Section Styling */
+.calculate-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 50px 0; /* Add space between sections */
+  padding: 20px;
+}
+
+.calculate-intro h2 {
+  font-size: 36px; /* Larger font for the heading */
+  font-weight: bold;
+  color: #333;
+}
+
+.calculate-intro p {
+  font-size: 20px; /* Smaller font for the paragraph */
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Cards Section Styling */
+.calculator-cards {
+  display: flex;
+  justify-content: center; /* Center cards horizontally */
+  align-items: center; /* Center cards vertically */
+  flex-wrap: wrap; /* Allow cards to wrap to the next line if needed */
+  gap: 20px; /* Space between cards */
+  padding: 20px;
+  height: auto; /* Adjust height automatically based on content */
+}
+
+/* Individual card styling */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px; /* Set a fixed width for the cards */
+  height: 250px; /* Set a fixed height for the cards */
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.credits-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 50px 0; /* Add space between sections */
+  padding: 20px;
+}
+
+.credits-intro h2 {
+  font-size: 36px; /* Larger font for the heading */
+  font-weight: bold;
+  color: #333;
+}
+
+.credits-intro p {
+  font-size: 20px; /* Smaller font for the paragraph */
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Cards Section Styling */
+.credits-cards {
+  display: flex;
+  justify-content: center; /* Center cards horizontally */
+  align-items: center; /* Center cards vertically */
+  flex-wrap: wrap; /* Allow cards to wrap to the next line if needed */
+  gap: 20px; /* Space between cards */
+  padding: 20px;
+  height: auto; /* Adjust height automatically based on content */
+}
+
+.insights-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 50px 0; /* Add space between sections */
+  padding: 20px;
+}
+
+.insights-intro h2 {
+  font-size: 36px; /* Larger font for the heading */
+  font-weight: bold;
+  color: #333;
+}
+
+.insights-intro p {
+  font-size: 20px; /* Smaller font for the paragraph */
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Cards Section Styling */
+.insight-cards {
+  display: flex;
+  justify-content: center; /* Center cards horizontally */
+  align-items: center; /* Center cards vertically */
+  flex-wrap: wrap; /* Allow cards to wrap to the next line if needed */
+  gap: 20px; /* Space between cards */
+  padding: 20px;
+  height: auto; /* Adjust height automatically based on content */
+}
+
+
+
+
 
 header {
   position: sticky;
@@ -86,7 +203,20 @@ button:hover {
 .card p {
   margin-bottom: 20px;
 }
+/* Centering content for each section */
+.about, .calculator, .insights, .earn-credits {
+  display: flex;
+  justify-content: center; /* Horizontally centers the content */
+  align-items: center; /* Vertically centers the content */
+  height: 100vh; /* Makes the section take up full viewport height */
+  text-align: center; /* Ensures text is centered */
+  padding: 20px;
+}
 
+/* Optional: Add some margin if you want space around the content */
+.about > div, .calculator > div, .insights > div, .earn-credits > div {
+  margin: 0 20px; /* Adjust this as needed */
+}
 /* Footer */
 .footer {
   background-color: #2e7d32;

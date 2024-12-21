@@ -1,9 +1,10 @@
 // src/components/Insights.js
 import React from 'react';
+import '../styles.css'; // Assuming you have a global styles file
 
 const Insights = () => {
   return (
-    <section id="insights">
+    <section id="insights" className="insights-intro">
       <h2>Insights</h2>
       <p>Get personalized tips to reduce your carbon footprint.</p>
       <div className="insight-cards">
