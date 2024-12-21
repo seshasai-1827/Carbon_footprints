@@ -44,14 +44,16 @@ button:hover {
 }
 
 /* Hero Section */
+
 .hero {
-  background-image: url('C:\Users\unmes\OneDrive\Desktop\New folder\Carbon_footprints\frontend\src\assets\images\nice.gif');
+  background-image: url('C:\Users\unmes\OneDrive\Desktop\New folder\Carbon_footprints\frontend\src\assets\images\wow.gif');
   background-size: cover;
+  background-position: center 80%; /* Keeps the gif at the top */
   padding: 100px 0;
   color: white;
   text-align: center;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
 }
-
 .hero h1 {
   font-size: 3em;
 }
