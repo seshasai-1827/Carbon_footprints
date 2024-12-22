@@ -1,9 +1,11 @@
+// App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import ProgressTracker from './components/ProgressTracker';
 import Calculate from './components/Calculators';
+import CalTravel from './components/CalTravel'; // Import the CalTravel component
 import EarnCredits from './components/EarnCredits';
 import Insights from './components/Insights';
 import Footer from './components/Footer';
@@ -20,6 +22,7 @@ function App() {
         <Route path="/" element={<HeroSection />} />
         <Route path="/track" element={<ProgressTracker />} />
         <Route path="/calculators" element={<Calculate />} />
+        <Route path="/calculators/travel" element={<CalTravel />} /> {/* Add this line */}
         <Route path="/credits" element={<EarnCredits />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="/about" element={<About />} /> {/* About route */}
