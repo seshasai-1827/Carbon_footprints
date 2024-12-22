@@ -1,5 +1,0 @@
-import sqlite3
-with sqlite3.connect('database.db') as conn:
-    conn.execute('DROP TABLE IF EXISTS USERS')  # Drop the old table
-    conn.execute('CREATE TABLE USERS (username TEXT, firstname TEXT, lastname TEXT, dob DATE, password TEXT)')  # Create the new table
-    conn.commit()

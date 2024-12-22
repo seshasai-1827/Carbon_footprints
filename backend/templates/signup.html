@@ -1,27 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
 </head>
 <body>
-    <h1>Signup</h1>
-    <form action="/signup" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
-
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" required><br>
-
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" required><br>
-
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" required><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-
-        <button type="submit">Signup</button>
-    </form>
+    <div class="registration-container">
+        <div class="registration-box">
+            <h1 class="registration-header">Signup</h1>
+            <form action="/signup" method="POST">
+                <div class="input-container">
+                    <input type="text" id="username" name="username" class="registration-input" placeholder="Username" required>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="first_name" name="first_name" class="registration-input" placeholder="First Name" required>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="last_name" name="last_name" class="registration-input" placeholder="Last Name" required>
+                </div>
+                <div class="input-container">
+                    <input type="date" id="dob" name="dob" class="registration-input" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="password" name="password" class="registration-input" placeholder="Password" required>
+                </div>
+                <button type="submit" class="registration-button">Signup</button>
+            </form>
+            <div class="registration-footer">
+                <p>Already have an account? <a href="/login" class="login-link">Login here</a></p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
