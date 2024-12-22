@@ -5,7 +5,7 @@ import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import ProgressTracker from './components/ProgressTracker';
 import Calculate from './components/Calculators';
-import CalTravel from './components/CalTravel/CalTravel'; // Import the CalTravel component
+import CalTravel from './components/CalTravel'; // Import the CalTravel component
 import EarnCredits from './components/EarnCredits';
 import Insights from './components/Insights';
 import Footer from './components/Footer';
