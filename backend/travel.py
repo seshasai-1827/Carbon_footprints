@@ -10,7 +10,7 @@ def travel():
         ctype = request.form.get("ctype")
         engine = request.form.get("engine")
         service = request.form.get("servicing")
-        public = request.form.get("public")
+        
 
         footprint += 1.3*int(flights)  
         if ctype=="hashbach":      
@@ -19,6 +19,29 @@ def travel():
             elif engine=="diesel":
                 footprint+=.12*int(car)
             elif engine=="electric":
-                footprint+=.1
+                footprint+=.09072*int(car)
+        elif ctype=="sedan":
+            if engine=="gasoline":
+                footprint += .2*int(car)
+            elif engine=="diesel":
+                footprint+=.16*int(car)
+            elif engine=="electric":
+                footprint+=.0469*int(car)
+        elif ctype=="suv":
+            if engine=="gasoline":
+                footprint += .25*int(car)
+            elif engine=="diesel":
+                footprint+=.21*int(car)
+            elif engine=="electric":
+                footprint+=.0714*int(car)
+        if service=="no":
+            footprint *=1.15
+        
+        return render_template("travel.html", footprint=footprint)
+    return render_template("travel.html")
+
+        
+    
+
 
 
