@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Carbon Footprint</title>
+</head>
+<body>
+    <h1>Calculate Your Travel Carbon Footprint</h1>
+    <form action="/travel" method="post">
+        <label for="flights">How many flights do you take per year?</label>
+        <input type="number" id="flights" name="flights" min="0" required><br><br>
+        
+        <label for="car">How many kilometers do you travel by car per year?</label>
+        <input type="number" id="car" name="car" min="0" required><br><br>
+        
+        <label for="ctype">What type of car do you use?</label>
+        <select id="ctype" name="ctype" required>
+            <option value="sedan">Sedan</option>
+            <option value="hashbach">Hashbach</option>
+            <option value="SUV">SUV</option>
+        </select><br><br>
+
+        <label for="engine">What type of car engine do you use?</label>
+        <select id="engine" name="engine" required>
+            <option value="gasoline">Gasoline</option>
+            <option value="diesel">Diesel</option>
+            <option value="electric">Electric</option>
+            <option value="hybrid">Hybrid</option>
+        </select><br><br>
+        
+        <label for="servicing">Do you service your car regularly?</label><br>
+        <input type="radio" id="servicing-yes" name="servicing" value="yes" required>
+        <label for="servicing-yes">Yes</label><br>
+        <input type="radio" id="servicing-no" name="servicing" value="no" required>
+        <label for="servicing-no">No</label><br><br>
+        
+        <label for="public">Do you use public transport normally?</label><br>
+        <input type="radio" id="public-yes" name="public" value="yes" required>
+        <label for="public-yes">Yes</label><br>
+        <input type="radio" id="public-no" name="public" value="no" required>
+        <label for="public-no">No</label><br><br>
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>

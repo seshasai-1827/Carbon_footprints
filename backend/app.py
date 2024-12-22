@@ -8,7 +8,7 @@ app.register_blueprint(login_bp)
 
 @app.route("/")
 def home():
-    return render_template("home.html")  # Home page with signup/login options
+    return render_template("home.html")  
 
 if __name__ == "__main__":
     app.run(debug=True)
