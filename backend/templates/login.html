@@ -1,19 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 </head>
 <body>
-    <h1>Login</h1>
-    <form action="/login" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-
-        <button type="submit">Login</button>
-    </form>
+    <div class="login-container">
+        <div class="login-box">
+            <h1 class="login-header">Login</h1>
+            <form action="/login" method="POST">
+                <div class="input-container">
+                    <input type="text" id="username" name="username" class="login-input" placeholder="Username" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="password" name="password" class="login-input" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+            <div class="login-footer">
+                <p>Don't have an account? <a href="/signup" class="register-link">Register here</a></p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-
