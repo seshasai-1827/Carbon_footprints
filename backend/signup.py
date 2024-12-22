@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, request, redirect, url_for
 import sqlite3
+
+from flask import Blueprint, redirect, render_template, request, url_for
 
 signup_bp = Blueprint('signup', __name__)
 
@@ -31,4 +32,3 @@ def signup():
 @signup_bp.route("/signup/success")
 def success():
     return render_template("login.html", message="Signup successful!")
-
