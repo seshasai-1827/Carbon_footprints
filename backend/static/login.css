@@ -1,14 +1,17 @@
 /* Remove margins and padding for body and html */
 html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Prevent scrollbars */
   width: 100%;
   height: 100%;
 }
 
-/* Login Container */
-.login-container {
+/* Combined form with login container and login box styles */
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
   background-image: url('/static/images/waterfalls.gif');
   display: flex;
   justify-content: center;
@@ -18,6 +21,36 @@ html, body {
   background-size: cover; /* Ensures the background covers the entire area */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent tiling */
+  flex-direction: column; /* Stack svgContainer and login-box vertically */
+}
+
+
+/* svgContainer inside form */
+form .svgContainer {
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+}
+
+form .svgContainer div {
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  padding-bottom: 100%;
+}
+
+/* Translucent Form Box */
+.login-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  margin-top: 10px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  width: 350px;
 }
 
 .toggle-password {
@@ -26,17 +59,6 @@ html, body {
   cursor: pointer;
   font-size: 1.2rem;
   margin-left: 5px;
-}
-
-/* Translucent Form Box */
-.login-box {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  width: 350px;
 }
 
 /* Placeholder Text */
