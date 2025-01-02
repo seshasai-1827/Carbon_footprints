@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import Speedometer from 'react-d3-speedometer';
 import styled from 'styled-components';
-import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-ChartJS.register(ArcElement, Tooltip, Legend);
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, BarElement, CategoryScale, Tooltip, Legend } from 'chart.js';
+ChartJS.register(BarElement, CategoryScale, Tooltip, Legend);
 
 // Styled-components for layout
 const Calculator = styled.div`
@@ -93,8 +94,8 @@ const Results = styled.div`
 `;
 
 const ChartWrapper = styled.div`
-  width: 200px; /* Adjust size of the doughnut chart */
-  height: 200px;
+  width: 600px; /* Adjust size of the bar chart */
+  height: 300px;
   margin-top: 2rem;
   position: relative;
   margin: 2rem auto; /* Center the chart */
@@ -133,62 +134,27 @@ const CarbonGauge = () => {
     setFootprint(footprint);
   };
 
-  const getNeedleRotation = () => {
-    if (footprint < 250) return -90;
-    if (footprint < 500) return -45;
-    if (footprint < 750) return 0;
-    if (footprint < 1000) return 45;
-    return 90;
-  };
-
   const chartData = {
-    labels: ['Dark Green', 'Light Green', 'Yellow', 'Orange', 'Red'],
+    labels: ['Current User', 'Global Average'],
     datasets: [
       {
-        data: [250, 250, 250, 250, 250], // Equal zone sizes
-        backgroundColor: ['#006400', '#4caf50', '#ffeb3b', '#ff9800', '#f44336'],
-        borderWidth: 0,
+        label: 'CO₂ Emissions (kg)',
+        data: [footprint || 0, 1500], // User's footprint or 0 if no calculation
+        backgroundColor: ['#4caf50', '#ffeb3b'], // Green for user, Yellow for global average
+        borderColor: ['#388e3c', '#fbc02d'], // Darker shades for borders
+        borderWidth: 1,
       },
     ],
   };
 
   const chartOptions = {
-    rotation: 270, // Start from top
-    circumference: 180, // Semi-circle
-    cutout: '70%', // Adjust thickness
+    responsive: true,
     plugins: {
-      tooltip: { enabled: false }, // Disable tooltip
-    },
-    plugins: {
-      needlePlugin: {
-        beforeDraw: function (chart) {
-          const { ctx, chartArea } = chart;
-          const { width, height } = chartArea;
-
-          const centerX = width / 2;
-          const centerY = height + 50;
-          const needleRotation = getNeedleRotation();
-
-          // Save current context
-          ctx.save();
-
-          // Set the center position of the needle and rotate based on the calculated value
-          ctx.translate(centerX, centerY);
-          ctx.rotate((Math.PI / 180) * needleRotation);
-
-          // Draw the needle (triangle shape)
-          ctx.beginPath();
-          ctx.moveTo(0, -10); // Top of the needle
-          ctx.lineTo(100, 0); // Right side of the needle
-          ctx.lineTo(0, 10); // Bottom of the needle
-          ctx.closePath();
-
-          // Set needle color and fill
-          ctx.fillStyle = '#000';
-          ctx.fill();
-
-          // Restore context after drawing
-          ctx.restore();
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            return `${context.dataset.label}: ${context.raw} kg CO₂`;
+          },
         },
       },
     },
@@ -258,9 +224,23 @@ const CarbonGauge = () => {
         <Results>
           <h2>Calculation Results</h2>
           <p>Estimated CO₂ Emissions: {footprint.toFixed(2)} kg</p>
-          <ChartWrapper>
-            <Doughnut data={chartData} options={chartOptions} />
-          </ChartWrapper>
+          <div style={{ textAlign: 'center' }}>
+  <h1>Emmision Meter</h1>
+  <Speedometer
+    minValue={0}
+    maxValue={3000}
+    value={footprint.toFixed(2)}  
+    segments={5}
+    segmentColors={['#006400', '#008000', '#FFFF00', '#FFA500', '#FF0000']}  // Updated to 5 colors
+    needleColor="#000000"
+    textColor="#000000"
+    height={400}
+    width={500}
+  />
+</div>
+
+
+          
         </Results>
       )}
     </Calculator>
