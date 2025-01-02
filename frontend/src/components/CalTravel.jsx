@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-// Styled-components definitions (converted exactly from your old CSS)
+// Styled-components for layout
 const Calculator = styled.div`
-  background-color: #f9f9f9; /* Light background color */
+  background-color: #f9f9f9;
   padding: 2rem;
 `;
 
@@ -11,13 +14,12 @@ const Title = styled.h1`
   font-size: 7.2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  margin-left: -1px; /* Adjust the margin to shift left */
+  margin-left: -1px;
   margin-right: 40px;
-  text-align: left; /* Ensure alignment is to the left */
+  text-align: left;
 
   span.yellow {
-    color: #c5a825; /* Bright yellow color */
+    color: #c5a825;
   }
 `;
 
@@ -77,10 +79,6 @@ const Button = styled.button`
 const Results = styled.div`
   margin-top: 3rem;
   text-align: left;
-  margin-left: 50px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 
   h2 {
     font-size: 1.4rem;
@@ -94,32 +92,106 @@ const Results = styled.div`
   }
 `;
 
-// Component
-const CalTravel = () => {
-  const [from, setFrom] = useState('');
-  const [to, setTo] = useState('');
-  const [tripType, setTripType] = useState('one-way');
-  const [accommodation, setAccommodation] = useState('hostel');
-  const [nights, setNights] = useState(2);
-  const [travellers, setTravellers] = useState(2);
-  const [emissions, setEmissions] = useState(null);
+const ChartWrapper = styled.div`
+  width: 200px; /* Adjust size of the doughnut chart */
+  height: 200px;
+  margin-top: 2rem;
+  position: relative;
+  margin: 2rem auto; /* Center the chart */
+`;
 
-  const calculateEmissions = (event) => {
+const CarbonGauge = () => {
+  const [flights, setFlights] = useState(0);
+  const [car, setCar] = useState(0);
+  const [ctype, setCtype] = useState('hatchback');
+  const [engine, setEngine] = useState('gasoline');
+  const [service, setService] = useState('yes');
+  const [footprint, setFootprint] = useState(null);
+
+  const calculateFootprint = (event) => {
     event.preventDefault();
+    let footprint = 0;
 
-    // Simple estimation logic for CO₂ emissions
-    const distance = 8000; // Example distance in km (Patna to Hamburg)
-    const emissionsPerKm = {
-      plane: 0.15, // kg CO₂ per km per person
-      car: 0.2,    // kg CO₂ per km per person
-      train: 0.05   // kg CO₂ per km per person
-    };
+    footprint += 1.3 * parseInt(flights, 10);
 
-    // Assuming the user travels by plane for this example
-    const mode = 'plane'; // You can modify this based on user input
-    const totalEmissions = distance * emissionsPerKm[mode] * travellers;
+    if (ctype === 'hatchback') {
+      if (engine === 'gasoline') footprint += 0.17 * car;
+      else if (engine === 'diesel') footprint += 0.12 * car;
+      else if (engine === 'electric') footprint += 0.09072 * car;
+    } else if (ctype === 'sedan') {
+      if (engine === 'gasoline') footprint += 0.2 * car;
+      else if (engine === 'diesel') footprint += 0.16 * car;
+      else if (engine === 'electric') footprint += 0.0469 * car;
+    } else if (ctype === 'suv') {
+      if (engine === 'gasoline') footprint += 0.25 * car;
+      else if (engine === 'diesel') footprint += 0.21 * car;
+      else if (engine === 'electric') footprint += 0.0714 * car;
+    }
 
-    setEmissions(totalEmissions);
+    if (service === 'no') footprint *= 1.15;
+
+    setFootprint(footprint);
+  };
+
+  const getNeedleRotation = () => {
+    if (footprint < 250) return -90;
+    if (footprint < 500) return -45;
+    if (footprint < 750) return 0;
+    if (footprint < 1000) return 45;
+    return 90;
+  };
+
+  const chartData = {
+    labels: ['Dark Green', 'Light Green', 'Yellow', 'Orange', 'Red'],
+    datasets: [
+      {
+        data: [250, 250, 250, 250, 250], // Equal zone sizes
+        backgroundColor: ['#006400', '#4caf50', '#ffeb3b', '#ff9800', '#f44336'],
+        borderWidth: 0,
+      },
+    ],
+  };
+
+  const chartOptions = {
+    rotation: 270, // Start from top
+    circumference: 180, // Semi-circle
+    cutout: '70%', // Adjust thickness
+    plugins: {
+      tooltip: { enabled: false }, // Disable tooltip
+    },
+    plugins: {
+      needlePlugin: {
+        beforeDraw: function (chart) {
+          const { ctx, chartArea } = chart;
+          const { width, height } = chartArea;
+
+          const centerX = width / 2;
+          const centerY = height + 50;
+          const needleRotation = getNeedleRotation();
+
+          // Save current context
+          ctx.save();
+
+          // Set the center position of the needle and rotate based on the calculated value
+          ctx.translate(centerX, centerY);
+          ctx.rotate((Math.PI / 180) * needleRotation);
+
+          // Draw the needle (triangle shape)
+          ctx.beginPath();
+          ctx.moveTo(0, -10); // Top of the needle
+          ctx.lineTo(100, 0); // Right side of the needle
+          ctx.lineTo(0, 10); // Bottom of the needle
+          ctx.closePath();
+
+          // Set needle color and fill
+          ctx.fillStyle = '#000';
+          ctx.fill();
+
+          // Restore context after drawing
+          ctx.restore();
+        },
+      },
+    },
   };
 
   return (
@@ -128,79 +200,71 @@ const CalTravel = () => {
         <span className="yellow">Travel</span> CO₂ <span className="yellow">Emission</span> Calculator
       </Title>
 
-      <form onSubmit={calculateEmissions}>
-        <Label htmlFor="from">From</Label>
-        <Input
-          type="text"
-          id="from"
-          value={from}
-          onChange={(e) => setFrom(e.target.value)}
-          placeholder="Patna, India"
-          required
-        />
-
-        <Label htmlFor="to">To</Label>
-        <Input
-          type="text"
-          id="to"
-          value={to}
-          onChange={(e) => setTo(e.target.value)}
-          placeholder="Bengaluru, India"
-          required
-        />
-
-        <Label htmlFor="trip-type">Return or One-way</Label>
-        <Select
-          id="trip-type"
-          value={tripType}
-          onChange={(e) => setTripType(e.target.value)}
-        >
-          <option value="one-way">One-way</option>
-          <option value="return">Return</option>
-        </Select>
-
-        <Label htmlFor="accommodation">Accommodation</Label>
-        <Select
-          id="accommodation"
-          value={accommodation}
-          onChange={(e) => setAccommodation(e.target.value)}
-        >
-          <option value="hostel">Hostel</option>
-          <option value="hotel">Hotel</option>
-          <option value="airbnb">Airbnb</option>
-        </Select>
-
-        <Label htmlFor="nights">Nights</Label>
+      <form onSubmit={calculateFootprint}>
+        <Label htmlFor="flights">Number of Flights</Label>
         <Input
           type="number"
-          id="nights"
-          value={nights}
-          onChange={(e) => setNights(e.target.value)}
-          min="1"
+          id="flights"
+          value={flights}
+          onChange={(e) => setFlights(e.target.value)}
           required
         />
 
-        <Label htmlFor="travellers">Travellers</Label>
+        <Label htmlFor="car">Kilometers Driven</Label>
         <Input
           type="number"
-          id="travellers"
-          value={travellers}
-          onChange={(e) => setTravellers(e.target.value)}
-          min="1"
+          id="car"
+          value={car}
+          onChange={(e) => setCar(e.target.value)}
           required
         />
+
+        <Label htmlFor="ctype">Car Type</Label>
+        <Select
+          id="ctype"
+          value={ctype}
+          onChange={(e) => setCtype(e.target.value)}
+        >
+          <option value="hatchback">Hatchback</option>
+          <option value="sedan">Sedan</option>
+          <option value="suv">SUV</option>
+        </Select>
+
+        <Label htmlFor="engine">Engine Type</Label>
+        <Select
+          id="engine"
+          value={engine}
+          onChange={(e) => setEngine(e.target.value)}
+        >
+          <option value="gasoline">Gasoline</option>
+          <option value="diesel">Diesel</option>
+          <option value="electric">Electric</option>
+        </Select>
+
+        <Label htmlFor="service">Serviced Recently</Label>
+        <Select
+          id="service"
+          value={service}
+          onChange={(e) => setService(e.target.value)}
+        >
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </Select>
 
         <Button type="submit">Calculate Emissions</Button>
       </form>
 
-      {emissions !== null && (
+      {footprint !== null && (
         <Results>
           <h2>Calculation Results</h2>
-          <p>Estimated CO₂ Emissions: {emissions.toFixed(2)} kg</p>
+          <p>Estimated CO₂ Emissions: {footprint.toFixed(2)} kg</p>
+          <ChartWrapper>
+            <Doughnut data={chartData} options={chartOptions} />
+          </ChartWrapper>
         </Results>
       )}
     </Calculator>
   );
 };
 
-export default CalTravel;
+export default CarbonGauge;
