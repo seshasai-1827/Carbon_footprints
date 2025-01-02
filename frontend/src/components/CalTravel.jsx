@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Speedometer from 'react-d3-speedometer';
 import styled from 'styled-components';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, Tooltip, Legend } from 'chart.js';
@@ -223,9 +224,23 @@ const CarbonGauge = () => {
         <Results>
           <h2>Calculation Results</h2>
           <p>Estimated CO₂ Emissions: {footprint.toFixed(2)} kg</p>
-          <ChartWrapper>
-            <Bar data={chartData} options={chartOptions} />
-          </ChartWrapper>
+          <div style={{ textAlign: 'center' }}>
+  <h1>Emmision Meter</h1>
+  <Speedometer
+    minValue={0}
+    maxValue={3000}
+    value={footprint.toFixed(2)}  
+    segments={5}
+    segmentColors={['#006400', '#008000', '#FFFF00', '#FFA500', '#FF0000']}  // Updated to 5 colors
+    needleColor="#000000"
+    textColor="#000000"
+    height={400}
+    width={500}
+  />
+</div>
+
+
+          
         </Results>
       )}
     </Calculator>
