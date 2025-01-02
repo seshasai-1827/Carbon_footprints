@@ -2,9 +2,10 @@
 node_modules/
 
 # Ignore Python virtual environment
-backend/myenv
+# backend/myenv
 # Other temporary files
-.DS_Store
-*.log
-*.pyc
-__pycache__/
+# .DS_Store
+# *.log
+# *.pyc
+# __pycache__/
+# 
