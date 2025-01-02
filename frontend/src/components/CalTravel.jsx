@@ -101,6 +101,24 @@ const ChartWrapper = styled.div`
   margin: 2rem auto; /* Center the chart */
 `;
 
+const SpeedometerWrapper = styled.div`
+  text-align: center;
+  margin-top: 2rem;
+`;
+
+const EmissionCategory = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: ${(props) => {
+    if (props.value >= 2400) return '#FF0000';
+    if (props.value >= 1800) return '#FFA500';
+    if (props.value >= 1200) return '#FFFF00';
+    if (props.value >= 600) return '#008000';
+    return '#006400';
+  }};
+`;
+
 const CarbonGauge = () => {
   const [flights, setFlights] = useState(0);
   const [car, setCar] = useState(0);
@@ -224,23 +242,26 @@ const CarbonGauge = () => {
         <Results>
           <h2>Calculation Results</h2>
           <p>Estimated CO₂ Emissions: {footprint.toFixed(2)} kg</p>
-          <div style={{ textAlign: 'center' }}>
-  <h1>Emmision Meter</h1>
-  <Speedometer
-    minValue={0}
-    maxValue={3000}
-    value={footprint.toFixed(2)}  
-    segments={5}
-    segmentColors={['#006400', '#008000', '#FFFF00', '#FFA500', '#FF0000']}  // Updated to 5 colors
-    needleColor="#000000"
-    textColor="#000000"
-    height={400}
-    width={500}
-  />
-</div>
-
-
-          
+          <SpeedometerWrapper>
+            <h1>Emission Meter</h1>
+            <Speedometer
+              minValue={0}
+              maxValue={3000}
+              value={footprint.toFixed(2)}  
+              segments={5}
+              segmentColors={['#006400', '#008000', '#FFFF00', '#FFA500', '#FF0000']}
+              needleColor="#000000"
+              textColor="#000000"
+              height={400}
+              width={500}
+            />
+            <EmissionCategory value={footprint}>
+              {footprint >= 2400 ? 'Very Poor' :
+               footprint >= 1800 ? 'Poor' :
+               footprint >= 1200 ? 'Average' :
+               footprint >= 600 ? 'Decent' : 'Good'}
+            </EmissionCategory>
+          </SpeedometerWrapper>
         </Results>
       )}
     </Calculator>
