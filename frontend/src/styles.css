@@ -193,3 +193,86 @@ button:hover {
 .earn-credits > div {
   margin: 0 20px;
 }
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.upload-section input[type="file"] {
+  font-size: 16px;
+  padding: 8px;
+}
+
+.verify-btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.verify-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.card {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.credits-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.progress-tracker {
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.progress-bar {
+  position: relative;
+  height: 30px;
+  background-color: #ddd;
+  border-radius: 20px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #28a745;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.chart-container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.actions button {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: #218838;
+}

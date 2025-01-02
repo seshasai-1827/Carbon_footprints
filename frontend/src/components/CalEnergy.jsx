@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Chart } from 'react-google-charts';
 import styled from 'styled-components';
 
 // Styled-components for layout
@@ -167,6 +168,29 @@ const EnergyCalculator = () => {
         <Results>
           <h2>Calculation Results</h2>
           <p>Estimated CO₂ Emissions: {footprint.toFixed(2)} kg</p>
+
+          <Chart
+            chartType="BarChart"
+            width="100%"
+            height="400px"
+            data={[
+              ['Energy Type', 'CO₂ Emissions'],
+              ['Renewable', footprint],
+              ['Non-Renewable', footprint * 3], // Make non-renewable emissions higher for contrast
+            ]}
+            options={{
+              title: 'CO₂ Emissions from Energy Consumption',
+              chartArea: { width: '50%' },
+              hAxis: {
+                title: 'CO₂ Emissions (kg)',
+                minValue: 0,
+              },
+              vAxis: {
+                title: 'Energy Source',
+              },
+              colors: ['#4caf50', '#f44336'], // Green for renewable, red for non-renewable
+            }}
+          />
         </Results>
       )}
     </Calculator>
