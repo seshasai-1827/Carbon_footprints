@@ -36,10 +36,14 @@ def travel():
                 footprint+=.0714*int(car)
         if service=="no":
             footprint *=1.15
+        footprint_travel(footprint)
+def footprint_travel(f):
+        if f > 1500:
+            message = f"You are consuming {f - 1500} Kgs of carbon more than the average person"
+        else:
+            message = f"You are consuming {1500 - f} Kgs of carbon less than the average person"
         
-        return render_template("travel.html", footprint=footprint)
-    return render_template("travel.html")
-
+        return render_template("travel.html", footprint=f, message=message)
         
     
 
