@@ -6,6 +6,7 @@ import ProgressTracker from './components/ProgressTracker';
 import Calculate from './components/Calculators';
 import CalTravel from './components/CalTravel'; // Import the CalTravel component
 import CalEnergy from './components/CalEnergy'; // Import the EnergyCalculator component
+import CalDiet from './components/CalDiet'; // Import the CalDiet component
 import EarnCredits from './components/EarnCredits';
 import Insights from './components/Insights';
 import Footer from './components/Footer';
@@ -24,6 +25,7 @@ function App() {
         <Route path="/calculators" element={<Calculate />} />
         <Route path="/calculators/travel" element={<CalTravel />} /> {/* Route for Travel Calculator */}
         <Route path="/calculators/energy" element={<CalEnergy />} /> {/* Route for Energy Calculator */}
+        <Route path="/calculators/diet" element={<CalDiet />} /> {/* Route for Diet Calculator */}
         <Route path="/credits" element={<EarnCredits />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="/about" element={<About />} /> {/* About route */}

@@ -13,6 +13,9 @@ const Calculate = () => {
     const handleEnergyClick = () => {
         navigate('/calculators/energy'); // Navigate to the CalTravel component
     };
+    const handleDietClick = () => {
+        navigate('/calculators/diet'); // Navigate to the CalTravel component
+    };
 
     return (
         <>
@@ -33,10 +36,11 @@ const Calculate = () => {
                         <p>Calculate emissions from energy consumption.</p>
                         <button onClick = {handleEnergyClick}>Start Now</button>
                     </div>
+
                     <div className="card">
                         <h3>Diet</h3>
                         <p>Estimate emissions from your dietary habits.</p>
-                        <button>Start Now</button>
+                        <button onClick = {handleDietClick}>Start Now</button>
                     </div>
                 </div>
             </section>
