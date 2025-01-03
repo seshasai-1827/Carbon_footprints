@@ -73,10 +73,8 @@ nav ul li a {
   color: white;
   text-decoration: none;
 }
-
-/* Hero Section */
 .hero {
-  background-image: url("C:/Users/Seshasai chillara/Desktop/Carbon_footprints/frontend/src/assets/images/wow.gif");
+  background-image: url("../src/assets/images/wow.gif");
 
   background-size: cover;
   background-position: center 80%;
