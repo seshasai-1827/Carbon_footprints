@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "react-google-charts": "^5.2.1"
+    "react-google-charts": "^5.2.1",
+    "react-transition-group": "^4.4.5"
   }
 }
