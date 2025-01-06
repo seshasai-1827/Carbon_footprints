@@ -17,9 +17,9 @@ def travel():
             if engine=="gasoline":
                 footprint += .17*int(car)
             elif engine=="diesel":
-                footprint+=.12*int(car)
+                footprint += .12*int(car)
             elif engine=="electric":
-                footprint+=.09072*int(car)
+                footprint += .09072*int(car)
         elif ctype=="sedan":
             if engine=="gasoline":
                 footprint += .2*int(car)
